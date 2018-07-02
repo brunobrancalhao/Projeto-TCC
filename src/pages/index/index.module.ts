@@ -10,4 +10,5 @@ import { IndexPage } from './index';
     IonicPageModule.forChild(IndexPage),
   ],
 })
-export class IndexPageModule {}
+export class IndexPageModule {
+}

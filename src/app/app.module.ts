@@ -8,12 +8,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
 import { IndexPage } from '../pages/index/index';
+import { AtividadesPage } from '../pages/atividades/atividades';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    IndexPage
+    IndexPage,
+    AtividadesPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { IndexPage } from '../pages/index/index';
   entryComponents: [
     MyApp,
     HomePage,
-    IndexPage
+    IndexPage,
+    AtividadesPage
   ],
   providers: [
     StatusBar,

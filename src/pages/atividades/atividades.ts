@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AtividadesPage} from '../atividades/atividades'
 
 /**
- * Generated class for the IndexPage page.
+ * Generated class for the AtividadesPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,18 +10,16 @@ import {AtividadesPage} from '../atividades/atividades'
 
 @IonicPage()
 @Component({
-  selector: 'page-index',
-  templateUrl: 'index.html',
+  selector: 'page-atividades',
+  templateUrl: 'atividades.html',
 })
-export class IndexPage {
+export class AtividadesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IndexPage');
+    console.log('ionViewDidLoad AtividadesPage');
   }
-  irParaAtividades(){
-  	this.navCtrl.push(AtividadesPage);
-  }
+
 }
