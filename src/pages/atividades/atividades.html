@@ -1,16 +1,51 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Atividades</ion-title>
-  </ion-navbar>
-
+    <ion-navbar no-border-bottom>
+      <ion-title>
+        Atividades
+      </ion-title>
+    </ion-navbar>
+<ion-toolbar>
+<ion-segment [(ngModel)]="atividades">
+    <ion-segment-button value="a_fazer">
+      A fazer
+    </ion-segment-button>
+    <ion-segment-button value="fazendo">
+      Fazendo
+    </ion-segment-button>
+    <ion-segment-button value="concluido">
+      Concluído
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      Atividades aparecerão aqui.
-    </ion-card-header>
-  </ion-card>
+<div [ngSwitch]="atividades">
+  <ion-list *ngSwitchCase="'a_fazer'">
+    <ion-item>
+      <h2>Atividade x.</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Atividade y.</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'fazendo'">
+    <ion-item>
+      <h2>Fazendo x</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Fazendo y</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'concluido'">
+    <ion-item>
+      <h2>Concluido x.</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Concluido y.</h2>
+    </ion-item>
+  </ion-list>
+</div>
 </ion-content>
