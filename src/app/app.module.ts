@@ -9,13 +9,15 @@ import { HomePage } from '../pages/home/home';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
 import { IndexPage } from '../pages/index/index';
 import { AtividadesPage } from '../pages/atividades/atividades';
+import { ModalPage } from '../pages/modal/modal';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     IndexPage,
-    AtividadesPage
+    AtividadesPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { AtividadesPage } from '../pages/atividades/atividades';
     MyApp,
     HomePage,
     IndexPage,
-    AtividadesPage
+    AtividadesPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

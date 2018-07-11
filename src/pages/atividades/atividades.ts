@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NgSwitch } from '@angular/common';
+import { ModalController, Platform, ViewController } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the AtividadesPage page.
@@ -15,11 +18,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AtividadesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AtividadesPage');
   }
-
+  teste() {
+    let profileModal = this.modalCtrl.create(ModalPage);
+    profileModal.present();
+  }
+  
 }

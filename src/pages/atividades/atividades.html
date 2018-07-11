@@ -22,9 +22,11 @@
 <ion-content>
 <div [ngSwitch]="atividades">
   <ion-list *ngSwitchCase="'a_fazer'">
+    <a style="text-decoration: none" (click)="teste({teste: 1})">
     <ion-item>
       <h2>Atividade x.</h2>
     </ion-item>
+    </a>
     <ion-item>
       <h2>Atividade y.</h2>
     </ion-item>
