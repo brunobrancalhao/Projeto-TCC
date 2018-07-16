@@ -13,14 +13,26 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'modal.html',
 })
 export class ModalPage {
+  teste;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
+    var testes = [
+      {
+        oi: 'Gollum'
+      },
+      {
+        oi: 'Frodo'
+      },
+      {
+        oi: 'Samwise Gamgee'
+      }
+    ];
+    this.teste = testes[this.navParams.get('teste')];
+    console.log(this.teste);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModalPage');
-  }
   dismiss() {
     this.viewCtrl.dismiss();
   }
+  
 }

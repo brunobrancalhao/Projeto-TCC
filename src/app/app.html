@@ -1,1 +1,10 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]='menu'>
+    <ion-content padding>
+        <ion-list>
+            <button ion-item>Sobre</button>
+            <button ion-item (click)="sair()">Sair</button>
+        </ion-list>
+    </ion-content>
+    </ion-menu>
+    
+<ion-nav #menu [root]="rootPage"></ion-nav>

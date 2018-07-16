@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AtividadesPage} from '../atividades/atividades'
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -17,5 +18,8 @@ export class IndexPage {
   }
   irParaAtividades(){
   	this.navCtrl.push(AtividadesPage);
+  }
+  sair(){
+    this.navCtrl.push(HomePage);
   }
 }

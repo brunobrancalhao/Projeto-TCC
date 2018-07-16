@@ -13,6 +13,6 @@ export class HomePage {
   }
 
   irParaIndex(){
-  	this.navCtrl.push(IndexPage);
+  	this.navCtrl.setRoot(IndexPage);
   }
 }

@@ -24,8 +24,8 @@ export class AtividadesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AtividadesPage');
   }
-  teste() {
-    let profileModal = this.modalCtrl.create(ModalPage);
+  teste(teste) {
+    let profileModal = this.modalCtrl.create(ModalPage, teste);
     profileModal.present();
   }
   
