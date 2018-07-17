@@ -10,6 +10,9 @@ import { TwdServiceProvider } from '../providers/twd-service/twd-service';
 import { IndexPage } from '../pages/index/index';
 import { AtividadesPage } from '../pages/atividades/atividades';
 import { ModalPage } from '../pages/modal/modal';
+import { MateriasProvider } from '../providers/materias/materias';
+
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { ModalPage } from '../pages/modal/modal';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,7 +39,8 @@ import { ModalPage } from '../pages/modal/modal';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TwdServiceProvider
+    TwdServiceProvider,
+    MateriasProvider
   ]
 })
 export class AppModule {}
