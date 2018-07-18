@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, InfiniteScroll } from 'ionic-angular';
 import {AtividadesPage} from '../atividades/atividades'
 import { HomePage } from '../home/home';
+import { ViewChild } from '@angular/core';
 
 import { MateriasProvider } from './../../providers/materias/materias';
 
@@ -12,6 +13,7 @@ import { MateriasProvider } from './../../providers/materias/materias';
 })
 export class IndexPage {
   materias: any[];
+  @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast : ToastController, private materiasProvider : MateriasProvider) {
   }
 
@@ -24,7 +26,6 @@ export class IndexPage {
   	this.materiasProvider.buscaMaterias().then((result: any) => {
       for (var i = 0; i < result.data.length; i++) {
         var materia = result.data[i];
-        console.log(materia);
         this.materias.push(materia);
       }
   	})
@@ -32,6 +33,7 @@ export class IndexPage {
   		this.toast.create({message: 'Erro nenhuma materia encontrada' + error.erro, position : 'botton', duration : 30000});
   	})
   }
+  
   irParaAtividades(){
   	this.navCtrl.push(AtividadesPage);
   }

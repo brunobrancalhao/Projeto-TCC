@@ -13,14 +13,16 @@
 
 
 <ion-content>
+  
+
+  <ion-item *ngFor="let materia of materias">
   <ion-card>
-    <ion-card-header>
-      <button ion-button (click)="irParaAtividades()">Matérias entrarão aqui.</button>
-    </ion-card-header>
+    <ion-list>
+      <button ion-item (click)="irParaAtividades()">
+        <ion-icon name="bookmarks" item-start></ion-icon>
+        {{materia.nome}}
+      </button>
+    </ion-list>
   </ion-card>
-  <ion-list>
-    <ion-item-sliding *ngFor="let materia of materias">
-        <mt-restaurant [materia]="materia"> </mt-restaurant>
-    </ion-item-sliding>
-  </ion-list>
+  </ion-item>
 </ion-content>
