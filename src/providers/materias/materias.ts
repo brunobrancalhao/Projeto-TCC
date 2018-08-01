@@ -10,6 +10,17 @@ export class MateriasProvider {
  
   constructor(public http: Http) { 
   }
+    login(username: string, password: string) {
+      return new Promise((resolve, reject) => {
+        this.http.get('http://dev2.unifacef.com.br:8000/api/matriculado_grad/'+username )
+          .subscribe((result: any) => {
+            resolve(result.json());
+          },
+          (error) => {
+            reject(error.json());
+          });
+      });
+    }
  
      buscaMaterias(){
         return new Promise((resolve, reject) => { 
@@ -23,6 +34,6 @@ export class MateriasProvider {
           reject(error.json()); 
           }) 
         }); 
-    }  
+    } 
  
 } 

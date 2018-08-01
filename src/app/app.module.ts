@@ -20,7 +20,7 @@ import {HttpModule} from '@angular/http';
     HomePage,
     IndexPage,
     AtividadesPage,
-    ModalPage
+    ModalPage,
   ],
   imports: [
     BrowserModule,
