@@ -6,13 +6,15 @@ import { Http } from '@angular/http';
 @Injectable() 
 export class MateriasProvider { 
  
-  private API_URL = 'http://localhost:3000/'; 
+  private API_URL = 'http://dev2.unifacef.com.br:8000/api/'; 
  
   constructor(public http: Http) { 
   }
     login(username: string, password: string) {
       return new Promise((resolve, reject) => {
-        this.http.get('http://dev2.unifacef.com.br:8000/api/matriculado_grad/'+username )
+        let url = this.API_URL + 'matriculadoGrad/'; 
+        let url_teste = 'http://localhost:3000/matriculado_grad/';
+        this.http.get(url+username )
           .subscribe((result: any) => {
             resolve(result.json());
           },
@@ -22,12 +24,12 @@ export class MateriasProvider {
       });
     }
  
-     buscaMaterias(){
+     buscaMaterias(id_aluno: string){
         return new Promise((resolve, reject) => { 
  
-          let url = this.API_URL + 'materias'; 
-           
-          this.http.get(url).subscribe((result: any) =>{ 
+          let url = this.API_URL + 'inscricoesDisciplinaGrad/'; 
+          let url_teste = 'http://localhost:3000/inscricoesDisciplinaGrad/';
+          this.http.get(url+id_aluno).subscribe((result: any) =>{ 
             resolve(result.json()); 
           }, 
           (error) =>{ 

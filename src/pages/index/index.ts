@@ -15,17 +15,20 @@ export class IndexPage {
   materias: any[];
   @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast : ToastController, private materiasProvider : MateriasProvider) {
+
   }
 
-  ionViewDidEnter() {
+  ionViewDidEnter(id_aluno) {
+    var id_aluno = this.navParams.get('id_aluno');
     this.materias = [];
-    this.getMaterias();
+    this.getMaterias(id_aluno);
   }
 
-  getMaterias(){
-  	this.materiasProvider.buscaMaterias().then((result: any) => {
-      for (var i = 0; i < result.data.length; i++) {
-        var materia = result.data[i];
+  getMaterias(id_aluno:string){
+  	this.materiasProvider.buscaMaterias(id_aluno).then((result: any) => {
+      console.log(result);
+      for (var i = 0; i < result.length; i++) {
+        var materia = result[i];
         this.materias.push(materia);
       }
   	})
@@ -38,6 +41,7 @@ export class IndexPage {
   	this.navCtrl.push(AtividadesPage);
   }
   sair(){
+    console.log("aq");
     this.navCtrl.push(HomePage);
   }
 }

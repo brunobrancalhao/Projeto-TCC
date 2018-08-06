@@ -16,11 +16,13 @@ export class HomePage {
 
   }
 
-  login(email:string,password:string) {
+  login(id_aluno:string,password:string) {
     this.materiasProvider.login(this.username,this.password).then((result: any) => {
       if(result){
         if(result[0]['hash_senha'] == Md5.init(this.password)){
-          this.navCtrl.setRoot(IndexPage);
+          this.navCtrl.push(IndexPage,{
+            id_aluno: this.username
+          });
         }else{
           this.toast.create({ message: 'Senha invalida', duration: 3000 }).present();
         }
@@ -33,7 +35,4 @@ export class HomePage {
     });   
   }
 
-  irParaIndex(){
-  	this.navCtrl.setRoot(IndexPage);
-  }
 }
