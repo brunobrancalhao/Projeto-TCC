@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Description
+      Descrições
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <span ion-text color="primary" showWhen="ios">Cancelar</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,9 +13,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-      <ion-item>
-        <h2>{{teste.oi}}</h2>
+    <ion-item>
+        <ion-label floating>{{atividade}}</ion-label>
+        <ion-textarea></ion-textarea>
       </ion-item>
-  </ion-list>
+        <ion-fab left bottom>
+          <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
+          <ion-fab-list side="top">
+            <button ion-fab (click)="dismiss()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
+            <button ion-fab><ion-icon name="ios-checkmark-circle-outline"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
 </ion-content>

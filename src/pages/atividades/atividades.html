@@ -5,7 +5,7 @@
       </ion-title>
     </ion-navbar>
 <ion-toolbar>
-<ion-segment [(ngModel)]="atividades">
+<ion-segment [(ngModel)]="atividades_switch">
     <ion-segment-button value="a_fazer">
       A fazer
     </ion-segment-button>
@@ -20,16 +20,19 @@
 </ion-header>
 
 <ion-content>
-<div [ngSwitch]="atividades">
+<div [ngSwitch]="atividades_switch">
   <ion-list *ngSwitchCase="'a_fazer'">
-    <a style="text-decoration: none" (click)="teste({teste: 1})">
-    <ion-item>
-      <h2>Atividade x.</h2>
-    </ion-item>
+    <a style="text-decoration: none">
+        <ion-card *ngFor="let atividade of atividades">
+          <ion-card-header (click)="openModal({atividade: atividade.nome})">
+            {{atividade.nome}}
+          </ion-card-header>
+          <ion-card-content>
+            Anotações sobre a atividade
+            <ion-buttons right style="font-size: 12px;color: #ec0000;">Mover para Fazendo&nbsp;<ion-icon name="ios-redo-outline"></ion-icon></ion-buttons>
+          </ion-card-content>
+        </ion-card>
     </a>
-    <ion-item>
-      <h2>Atividade y.</h2>
-    </ion-item>
   </ion-list>
 
   <ion-list *ngSwitchCase="'fazendo'">

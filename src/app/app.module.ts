@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import {AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
@@ -13,6 +14,15 @@ import { ModalPage } from '../pages/modal/modal';
 import { MateriasProvider } from '../providers/materias/materias';
 
 import {HttpModule} from '@angular/http';
+
+const firebaseAppConfig: FirebaseAppConfig = {
+  apiKey: "AIzaSyDj8aq6WFRjMLpQfwNlhoY9vFq818wpJYU",
+  authDomain: "kanbam-tasks.firebaseapp.com",
+  databaseURL: "https://kanbam-tasks.firebaseio.com",
+  projectId: "kanbam-tasks",
+  storageBucket: "kanbam-tasks.appspot.com",
+  messagingSenderId: "69213667198"
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +35,8 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseAppConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

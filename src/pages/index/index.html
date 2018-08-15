@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-buttons start>
       <button ion-button icon-only menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -15,13 +15,11 @@
 <ion-content>
   
 
-  <ion-item *ngFor="let materia of materias">
-  <ion-card>
-    <ion-list>
-      <button ion-item (click)="irParaAtividades()">
-        {{materia.nome_disciplina}}
-      </button>
-    </ion-list>
+  <ion-item >
+  <ion-card *ngFor="let materia of materias">
+    <ion-card-content *ngIf="materia.nome_disciplina_correta" style="white-space: normal;" (click)="irParaAtividades(materia.id_disciplina_serie)">
+        <h2>{{materia.nome_disciplina_correta}}</h2>
+    </ion-card-content>
   </ion-card>
   </ion-item>
 </ion-content>

@@ -11,4 +11,8 @@ import { IndexPage } from './index';
   ],
 })
 export class IndexPageModule {
+  constructor(
+    public materiaID: string,
+    public materiaName: string,
+) {}
 }

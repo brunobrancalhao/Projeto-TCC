@@ -14,21 +14,12 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class ModalPage {
   teste;
+  atividade: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
-    var testes = [
-      {
-        oi: 'Gollum'
-      },
-      {
-        oi: 'Frodo'
-      },
-      {
-        oi: 'Samwise Gamgee'
-      }
-    ];
-    this.teste = testes[this.navParams.get('teste')];
-    console.log(this.teste);
+
+    this.atividade = this.navParams.get('atividade');
+    console.log(this.atividade);
   }
 
   dismiss() {
