@@ -55,4 +55,9 @@ export class FirebaseServiceProvider {
           .then(result => console.log(result));
   }
 
+  updateDesc(key:string,desc:string){
+
+    this.db.database.ref("atividades/"+key).update({ descricao : desc });
+  }
+
 }

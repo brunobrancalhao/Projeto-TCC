@@ -89,9 +89,9 @@ export class AtividadesPage {
     });
   }
   
-  openModal(atividade,key) {
+  openModal(atividade,key,desc) {
     console.log(atividade,key);
-    let profileModal = this.modalCtrl.create(ModalPage, atividade);
+    let profileModal = this.modalCtrl.create(ModalPage, { atividade : atividade.atividade,key : key.key, desc : desc.desc });
     profileModal.present();
   }
   

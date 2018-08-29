@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { FirebaseServiceProvider } from './../../providers/firebase-service/firebase-service';
 /**
  * Generated class for the ModalPage page.
  *
@@ -13,17 +14,24 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-  teste;
+  key : any;
   atividade: any;
+  descricaoantiga : any;
+  descricao:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
+  constructor(public dbService: FirebaseServiceProvider, public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
 
-    this.atividade = this.navParams.get('atividade');
-    console.log(this.atividade);
+    this.atividade = navParams.get('atividade');
+    this.key = navParams.get('key');
+    this.descricaoantiga = navParams.get('desc');
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  updateDesc(descricao:string){
+    this.dbService.updateDesc(this.key,this.descricao);
   }
   
 }
