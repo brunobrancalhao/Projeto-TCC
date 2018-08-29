@@ -14,7 +14,7 @@ export class MateriasProvider {
       return new Promise((resolve, reject) => {
         let url = this.API_URL + 'matriculadoGrad/'; 
         let url_teste = 'http://localhost:3000/matriculado_grad/';
-        this.http.get(url+username )
+        this.http.get(url_teste+username )
           .subscribe((result: any) => {
             resolve(result.json());
           },
@@ -29,7 +29,7 @@ export class MateriasProvider {
  
           let url = this.API_URL + 'inscricoesDisciplinaGrad/'; 
           let url_teste = 'http://localhost:3000/inscricoesDisciplinaGrad/';
-          this.http.get(url+id_aluno).subscribe((result: any) =>{ 
+          this.http.get(url_teste+id_aluno).subscribe((result: any) =>{ 
             resolve(result.json()); 
           }, 
           (error) =>{ 

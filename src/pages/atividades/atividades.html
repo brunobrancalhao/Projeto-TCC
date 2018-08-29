@@ -18,39 +18,66 @@
   </ion-segment>
 </ion-toolbar>
 </ion-header>
-
+<!-- Move tabs ionic change -->
 <ion-content>
+  
 <div [ngSwitch]="atividades_switch">
+    <div  *ngFor="let atividade of atividadesbd">
   <ion-list *ngSwitchCase="'a_fazer'">
+      <div *ngIf="atividade.status_atividade == 0">
     <a style="text-decoration: none">
-        <ion-card *ngFor="let atividade of atividades">
-          <ion-card-header (click)="openModal({atividade: atividade.nome})">
-            {{atividade.nome}}
+        <ion-card >
+          <ion-card-header (click)="openModal({atividade: atividade.titulo})">
+            {{atividade.titulo}}
           </ion-card-header>
           <ion-card-content>
-            Anotações sobre a atividade
-            <ion-buttons right style="font-size: 12px;color: #ec0000;">Mover para Fazendo&nbsp;<ion-icon name="ios-redo-outline"></ion-icon></ion-buttons>
+            {{atividade.descricao}}
+            <ion-buttons right style="font-size: 12px;color: #ec0000;">Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></ion-buttons>
           </ion-card-content>
         </ion-card>
     </a>
+  </div>
   </ion-list>
 
   <ion-list *ngSwitchCase="'fazendo'">
-    <ion-item>
-      <h2>Fazendo x</h2>
-    </ion-item>
-    <ion-item>
-      <h2>Fazendo y</h2>
-    </ion-item>
+      <div *ngIf="atividade.status_atividade == 1">
+    <a style="text-decoration: none">
+      <ion-card >
+        <ion-card-header (click)="openModal({atividade: atividade.titulo})">
+          {{atividade.titulo}}
+        </ion-card-header>
+        <ion-card-content>
+          {{atividade.descricao}}
+          <div class="row">
+            <div class="col col-sm-6">
+              <ion-buttons left style="font-size: 12px;color: #ec0000;"><ion-icon id="btn-move" name="md-return-left"></ion-icon>&nbsp;Mover para A Fazer</ion-buttons>
+            </div>
+            <div class="col col-sm-6">
+              <ion-buttons right style="font-size: 12px;color: #ec0000;">Mover para Concluido&nbsp;<ion-icon id="btn-move" name="md-return-right"></ion-icon></ion-buttons>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+  </a>
+</div>
   </ion-list>
 
   <ion-list *ngSwitchCase="'concluido'">
-    <ion-item>
-      <h2>Concluido x.</h2>
-    </ion-item>
-    <ion-item>
-      <h2>Concluido y.</h2>
-    </ion-item>
+    <div *ngIf="atividade.status_atividade == 2">
+    <a style="text-decoration: none">
+      <ion-card >
+        <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key})">
+          {{atividade.titulo}}
+        </ion-card-header>
+        <ion-card-content>
+          {{atividade.descricao}}
+          <ion-buttons left style="font-size: 12px;color: #ec0000;">Mover para Fazendo&nbsp;<ion-icon id="btn-move" name="md-return-right"></ion-icon></ion-buttons>
+        </ion-card-content>
+      </ion-card>
+  </a>
+  </div>
   </ion-list>
 </div>
+</div>
+<button ion-button full outline (click)="irParaAddAtividade(id_disciplina,id_aluno)"><ion-icon ios="md-bookmarks" md="md-bookmarks"></ion-icon>&nbsp;Adicionar Atividade</button>
 </ion-content>

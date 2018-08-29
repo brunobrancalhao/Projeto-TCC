@@ -18,6 +18,7 @@ import { MateriasProvider } from './../../providers/materias/materias';
 export class IndexPage {
   materias: any[];
   id_disciplina:string;  
+  id_aluno:string;
   @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast : ToastController, private materiasProvider : MateriasProvider) {
 
@@ -26,18 +27,14 @@ export class IndexPage {
   ionViewDidEnter(id_aluno) {
     var id_aluno = this.navParams.get('id_aluno');
     this.materias = [];
+    this.id_aluno = id_aluno;
     this.getMaterias(id_aluno);
   }
 
   getMaterias(id_aluno:string){
-    var materiasDB = false;//this.getMateriasDB(id_aluno);
-    if(materiasDB){
-
-    } else {
       this.materiasProvider.buscaMaterias(id_aluno).then((result: any) => {
         for (var i = 0; i < result.length; i++) {
           var materia = result[i];
-          
           materia.disciplina = this.capitalize(materia.nome_disciplina);
           if(materia.disciplina != '* Comunicados e materiais para todos os ALUNOS de Computação'){
             materia.nome_disciplina_correta = materia.disciplina;
@@ -48,7 +45,6 @@ export class IndexPage {
       .catch((error: any) => {
         this.toast.create({message: 'Erro nenhuma materia encontrada' + error.erro, position : 'botton', duration : 30000});
       })
-    }
   }
 
   capitalize(phrase) {
@@ -56,13 +52,13 @@ export class IndexPage {
     return phrase;
   }
   
-  irParaAtividades(id_disciplina:string){
+  irParaAtividades(id_disciplina:string, id_aluno:string){
     this.navCtrl.push(AtividadesPage,{
-      id_disciplina: id_disciplina
+      id_disciplina: id_disciplina,
+      id_aluno : id_aluno
     });
   }
   sair(){
-    console.log("aq");
     this.navCtrl.push(HomePage);
   }
 }
