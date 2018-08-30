@@ -17,6 +17,7 @@ export class HomePage {
   }
 
   login(id_aluno:string,password:string) {
+
     this.materiasProvider.login(this.username,this.password).then((result: any) => {
       if(result){
         if(result[0]['hash_senha'] == Md5.init(this.password)){
@@ -33,6 +34,6 @@ export class HomePage {
     .catch((error: any) => {
       this.toast.create({ message: 'Aluno não encontrado', duration: 3000 }).present();
     });   
-  }
+   }
 
 }

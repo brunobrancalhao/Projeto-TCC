@@ -60,4 +60,9 @@ export class FirebaseServiceProvider {
     this.db.database.ref("atividades/"+key).update({ descricao : desc });
   }
 
+  moveAtv(key : string,status){
+    this.db.database.ref("atividades/"+key).update({ status_atividade : status});
+  }
+
+
 }

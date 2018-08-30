@@ -8,9 +8,6 @@ import {AddAtividadesPage} from '../add-atividades/add-atividades'
 
 import { MateriasProvider } from './../../providers/materias/materias';
 
-
-
-
 /**
  * Generated class for the AtividadesPage page.
  *
@@ -69,7 +66,6 @@ export class AtividadesPage {
 
       }
       await this.dbService.getAtividades(id_aluno,id_disciplina).then((atividadesbd2: any) => {
-       
         this.atividadesbd = atividadesbd2;
 
       this.atividades.push(this.atividadesbd);
@@ -93,6 +89,19 @@ export class AtividadesPage {
     console.log(atividade,key);
     let profileModal = this.modalCtrl.create(ModalPage, { atividade : atividade.atividade,key : key.key, desc : desc.desc });
     profileModal.present();
+  }
+
+  moveAtvFazendo(key : string){
+    this.dbService.moveAtv(key,1);
+    console.log(key);
+  }
+
+  moveAtvAFazer(key : string){
+    this.dbService.moveAtv(key,0);
+  }
+
+  moveAtvOk(key : string){
+    this.dbService.moveAtv(key,2);
   }
   
 }

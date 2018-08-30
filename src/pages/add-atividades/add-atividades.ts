@@ -41,8 +41,8 @@ export class AddAtividadesPage {
     'id_aluno' : id_aluno,
     'id_disciplina' : id_disciplina,
     'idx_aluno_disciplina' : id_aluno + '_' + id_disciplina,
-    'custom' : 1,
-    'status_ativividade' : 0,
+    'atividade_custom' : 1,
+    'status_atividade' : 0,
     'idx_atvTitulo': id_aluno + '_' + id_disciplina + '_' + atividade.titulo + '_1'
 
    }

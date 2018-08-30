@@ -32,7 +32,8 @@
           </ion-card-header>
           <ion-card-content>
             {{atividade.descricao}}
-            <ion-buttons right style="font-size: 12px;color: #ec0000;">Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></ion-buttons>
+            <hr>
+            <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
           </ion-card-content>
         </ion-card>
     </a>
@@ -48,13 +49,10 @@
         </ion-card-header>
         <ion-card-content>
           {{atividade.descricao}}
-          <div class="row">
-            <div class="col col-sm-6">
-              <ion-buttons left style="font-size: 12px;color: #ec0000;"><ion-icon id="btn-move" name="md-return-left"></ion-icon>&nbsp;Mover para A Fazer</ion-buttons>
-            </div>
-            <div class="col col-sm-6">
-              <ion-buttons right style="font-size: 12px;color: #ec0000;">Mover para Concluido&nbsp;<ion-icon id="btn-move" name="md-return-right"></ion-icon></ion-buttons>
-            </div>
+          <hr>
+          <div class = "row">
+              <ion-buttons left><button ion-button id="btn-move" (click)="moveAtvAFazer(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover Apara a Fazer</button></ion-buttons>
+              <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvOk(atividade.key)" clear>Mover para Concluido&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
           </div>
         </ion-card-content>
       </ion-card>
@@ -71,7 +69,8 @@
         </ion-card-header>
         <ion-card-content>
           {{atividade.descricao}}
-          <ion-buttons left style="font-size: 12px;color: #ec0000;">Mover para Fazendo&nbsp;<ion-icon id="btn-move" name="md-return-right"></ion-icon></ion-buttons>
+          <hr>
+          <ion-buttons left><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover Apara a Fazendo</button></ion-buttons>
         </ion-card-content>
       </ion-card>
   </a>
