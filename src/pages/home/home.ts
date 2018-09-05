@@ -5,6 +5,7 @@ import { MateriasProvider } from './../../providers/materias/materias';
 import {Md5} from "md5-typescript";
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

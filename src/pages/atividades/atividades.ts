@@ -5,6 +5,8 @@ import { NgSwitch } from '@angular/common';
 import { ModalController, Platform, ViewController } from 'ionic-angular';
 import { ModalPage } from '../modal/modal';
 import {AddAtividadesPage} from '../add-atividades/add-atividades'
+import * as $ from 'jquery';
+
 
 import { MateriasProvider } from './../../providers/materias/materias';
 
@@ -22,6 +24,7 @@ import { MateriasProvider } from './../../providers/materias/materias';
 })
 export class AtividadesPage {
   private atvBd;
+
   id : string;
   atividades : any[];
   atividadesbd : any[];
@@ -86,22 +89,42 @@ export class AtividadesPage {
   }
   
   openModal(atividade,key,desc) {
-    console.log(atividade,key);
-    let profileModal = this.modalCtrl.create(ModalPage, { atividade : atividade.atividade,key : key.key, desc : desc.desc });
-    profileModal.present();
+    let atvModal = this.modalCtrl.create(ModalPage, { atividade : atividade.atividade,key : key.key, desc : desc.desc });
+    atvModal.onDidDismiss(data => {
+      this.atividadesbd.forEach((element,i) => {
+        if(element.key == data.key){
+          this.atividadesbd[i].descricao = data.descricao; 
+        }
+      });
+    });
+    atvModal.present();
   }
 
   moveAtvFazendo(key : string){
     this.dbService.moveAtv(key,1);
-    console.log(key);
+    this.atividadesbd.forEach((element,i) => {
+      if(element.key == key){
+        this.atividadesbd[i].status_atividade = 1; 
+      }
+    });
   }
 
   moveAtvAFazer(key : string){
     this.dbService.moveAtv(key,0);
+    this.atividadesbd.forEach((element,i) => {
+      if(element.key == key){
+        this.atividadesbd[i].status_atividade = 0; 
+      }
+    });
   }
 
   moveAtvOk(key : string){
     this.dbService.moveAtv(key,2);
+    this.atividadesbd.forEach((element,i) => {
+      if(element.key == key){
+        this.atividadesbd[i].status_atividade = 2; 
+      }
+    });
   }
   
 }

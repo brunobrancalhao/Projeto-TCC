@@ -24,9 +24,9 @@
 <div [ngSwitch]="atividades_switch">
     <div  *ngFor="let atividade of atividadesbd">
   <ion-list *ngSwitchCase="'a_fazer'">
-      <div *ngIf="atividade.status_atividade == 0">
+      <div id="fazer" *ngIf="atividade.status_atividade == 0">
     <a style="text-decoration: none">
-        <ion-card >
+        <ion-card class="atv-{{atividade.key}}">
           <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
             {{atividade.titulo}}
           </ion-card-header>
@@ -41,9 +41,9 @@
   </ion-list>
 
   <ion-list *ngSwitchCase="'fazendo'">
-      <div *ngIf="atividade.status_atividade == 1">
+      <div id="fazendo" *ngIf="atividade.status_atividade == 1">
     <a style="text-decoration: none">
-      <ion-card >
+      <ion-card  class="atv-{{atividade.key}}">
         <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
           {{atividade.titulo}}
         </ion-card-header>
@@ -61,9 +61,9 @@
   </ion-list>
 
   <ion-list *ngSwitchCase="'concluido'">
-    <div *ngIf="atividade.status_atividade == 2">
+    <div id="concluido" *ngIf="atividade.status_atividade == 2">
     <a style="text-decoration: none">
-      <ion-card >
+      <ion-card  class="atv-{{atividade.key}}">
         <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
           {{atividade.titulo}}
         </ion-card-header>

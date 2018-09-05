@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
+import {AtividadesPage} from '../atividades/atividades'
 
 /**
  * Generated class for the AddAtividadesPage page.
@@ -47,6 +48,9 @@ export class AddAtividadesPage {
 
    }
     this.dbService.save(atividades);
+    this.navCtrl.push(AtividadesPage,{
+      atividadesAdded: atividades,
+    });
   }
 
 }
