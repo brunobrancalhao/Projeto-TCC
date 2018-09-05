@@ -45,10 +45,14 @@ export class MateriasProvider {
         let url_teste = 'http://localhost:3000/atividadesDisciplina/';
         
         this.http.get(url_teste+id_materia).subscribe((result: any) =>{ 
-          resolve(result.json()); 
+          if(result.json()){
+            resolve(result.json());
+          } else {
+            resolve();
+          } 
         }, 
         (error) =>{ 
-        reject(error.json()); 
+        reject(error); 
         }) 
       }); 
   } 
