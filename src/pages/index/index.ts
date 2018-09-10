@@ -5,9 +5,6 @@ import { HomePage } from '../home/home';
 import { ViewChild } from '@angular/core'
 import { materias } from '../../models/materias/materias.interface';
 import { AngularFireList } from 'angularfire2/database';
-
-
-
 import { MateriasProvider } from './../../providers/materias/materias';
 
 @IonicPage()
@@ -27,6 +24,11 @@ export class IndexPage {
   ionViewDidEnter(id_aluno) {
     var id_aluno = this.navParams.get('id_aluno');
     this.materias = [];
+    if(id_aluno){
+      id_aluno = id_aluno;
+    } else {
+      id_aluno = localStorage.getItem('user');
+    }
     this.id_aluno = id_aluno;
     this.getMaterias(id_aluno);
   }

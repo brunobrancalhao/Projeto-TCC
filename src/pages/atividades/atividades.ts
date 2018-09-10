@@ -48,7 +48,7 @@ export class AtividadesPage {
 
   async getAtividades(id_disciplina:string, id_aluno : string){
     var atvExist;
-  	this.materiasProvider.buscaAtividades(id_disciplina).then(async (result: any) => {
+  	/*this.materiasProvider.buscaAtividades(id_disciplina).then(async (result: any) => {
         for (var i = 0; i < result.data.length; i++) {
           var atividade = result.data[i];
           await this.dbService.getAtividadescustom(id_aluno,id_disciplina,atividade.id_atividade).then((atvExistresult) => {
@@ -67,19 +67,19 @@ export class AtividadesPage {
             }
             this.dbService.save(atividades);
           } 
-
-        }
+              
+        }*/
       await this.dbService.getAtividades(id_aluno,id_disciplina).then((atividadesbd2: any) => {
         console.log(atividadesbd2);
           this.atividadesbd = atividadesbd2;
 
       this.atividades.push(this.atividadesbd);
         
-      });
-  	})
-  	.catch((error: any) => {
-  		this.toast.create({message: 'Erro nenhuma atividade encontrada' + error.erro, position : 'botton', duration : 30000});
-  	})
+      }).catch((error: any) => {
+        this.toast.create({message: 'Erro nenhuma atividade encontrada' + error.erro, position : 'botton', duration : 30000});
+      })
+  	//})
+
   }
 
   irParaAddAtividade(id_disciplina, id_aluno){

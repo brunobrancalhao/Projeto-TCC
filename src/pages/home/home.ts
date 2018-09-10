@@ -1,8 +1,10 @@
+import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import {IndexPage} from '../index/index'
 import { MateriasProvider } from './../../providers/materias/materias';
 import {Md5} from "md5-typescript";
+import { Storage } from '@ionic/storage';
 
 
 
@@ -13,7 +15,9 @@ import {Md5} from "md5-typescript";
 export class HomePage {
   username:string;
   password:string;
-  constructor(public navCtrl: NavController, private toast : ToastController, private materiasProvider : MateriasProvider) {
+  isLoggedIn: Boolean;
+  user: any;
+  constructor(public Auth : AuthProvider, public storage: Storage, public navCtrl: NavController, private toast : ToastController, private materiasProvider : MateriasProvider) {
 
   }
 
@@ -22,6 +26,7 @@ export class HomePage {
     this.materiasProvider.login(this.username,this.password).then((result: any) => {
       if(result){
         if(result[0]['hash_senha'] == Md5.init(this.password)){
+          localStorage.setItem('user', this.username);
           this.navCtrl.push(IndexPage,{
             id_aluno: this.username
           });
@@ -36,5 +41,6 @@ export class HomePage {
       this.toast.create({ message: 'Aluno não encontrado', duration: 3000 }).present();
     });   
    }
+
 
 }

@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import * as jquery from 'jquery'
+import { IonicStorageModule } from '@ionic/storage';
 
 
 
@@ -22,6 +23,7 @@ import { MateriasProvider } from '../providers/materias/materias';
 import {HttpModule} from '@angular/http';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AuthProvider } from '../providers/auth/auth';
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyDj8aq6WFRjMLpQfwNlhoY9vFq818wpJYU",
@@ -46,7 +48,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(firebaseAppConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,7 +66,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TwdServiceProvider,
     MateriasProvider,
-    FirebaseServiceProvider
+    FirebaseServiceProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}
