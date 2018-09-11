@@ -70,7 +70,6 @@ export class AtividadesPage {
               
         }*/
       await this.dbService.getAtividades(id_aluno,id_disciplina).then((atividadesbd2: any) => {
-        console.log(atividadesbd2);
           this.atividadesbd = atividadesbd2;
 
       this.atividades.push(this.atividadesbd);

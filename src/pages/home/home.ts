@@ -23,23 +23,30 @@ export class HomePage {
 
   login(id_aluno:string,password:string) {
 
-    this.materiasProvider.login(this.username,this.password).then((result: any) => {
-      if(result){
-        if(result[0]['hash_senha'] == Md5.init(this.password)){
-          localStorage.setItem('user', this.username);
-          this.navCtrl.push(IndexPage,{
-            id_aluno: this.username
-          });
+    if(this.username){
+      this.materiasProvider.login(this.username,this.password).then((result: any) => {
+        if(result){
+          if(result[0]['hash_senha'] == Md5.init(this.password)){
+            console.log(result);
+            localStorage.setItem('user', this.username);
+            localStorage.setItem('nome', result[0]['sobrenome_aluno']);
+            localStorage.setItem('email', result[0]['email']);
+            this.navCtrl.push(IndexPage,{
+              id_aluno: this.username
+            });
+          }else{
+            this.toast.create({ message: 'Senha invalida', duration: 3000 }).present();
+          }
         }else{
-          this.toast.create({ message: 'Senha invalida', duration: 3000 }).present();
+          this.toast.create({ message: 'Aluno não encontrado', duration: 3000 }).present();
         }
-      }else{
+      })
+      .catch((error: any) => {
         this.toast.create({ message: 'Aluno não encontrado', duration: 3000 }).present();
-      }
-    })
-    .catch((error: any) => {
-      this.toast.create({ message: 'Aluno não encontrado', duration: 3000 }).present();
-    });   
+      });
+    } else {
+        this.toast.create({ message: 'Por favor informar usuario e senha ', duration: 3000 }).present();
+    }   
    }
 
 

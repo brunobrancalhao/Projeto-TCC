@@ -61,6 +61,7 @@ export class IndexPage {
     });
   }
   sair(){
-    this.navCtrl.push(HomePage);
+    console.log("aq");
+
   }
 }
