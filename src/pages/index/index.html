@@ -13,18 +13,21 @@
 
 
 <ion-content>
-  
-
-  <!-- <ion-item style="background-color: #efeff0"> -->
-  <!-- <ion-card *ngFor="let materia of materias">
-    <ion-card-content *ngIf="materia.nome_disciplina_correta" style="white-space: normal;" (click)="irParaAtividades(materia.id_disciplina_serie, id_aluno)">
-        <h2>{{materia.nome_disciplina_correta}}</h2>
+  <ion-item style="background-color: #efeff0"> 
+    <ion-card *ngFor="let materia of materias">
+    <ion-card-content class="card-atv" *ngIf="materia.nome_disciplina_correta" [ngStyle]="{'border-bottom-color':  materia.color}" (click)="irParaAtividades(materia.id_disciplina_serie, id_aluno)">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-10>{{materia.nome_disciplina_correta}}</ion-col>
+          <ion-col style="text-align: -webkit-center;margin-top: 5%; font-size: 25px;" col-2><ion-icon name="ios-arrow-forward-outline"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
-  </ion-card> -->
-  <ion-list>
+  </ion-card>
+  <!-- <ion-list>
       <button style="white-space: normal;" ion-item *ngFor="let materia of materias" (click)="irParaAtividades(materia.id_disciplina_serie, id_aluno)">
           <h2>{{materia.nome_disciplina_correta}}</h2>
       </button>  
-  </ion-list>
-  <!-- </ion-item> -->
+  </ion-list> -->
+  </ion-item>
 </ion-content>

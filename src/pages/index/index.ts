@@ -34,9 +34,20 @@ export class IndexPage {
   }
 
   getMaterias(id_aluno:string){
+      var color = {
+        '0' : '#ff0000',
+        '1' : '#00ff00',
+        '2' : '#9400d3',
+        '3' : '#ffff00',
+        '4' : '#0000ff',
+        '5' : '#00bfff',
+        '6' : '#ff1493',
+        '7' : '#ffa500'
+      }
       this.materiasProvider.buscaMaterias(id_aluno).then((result: any) => {
         for (var i = 0; i < result.length; i++) {
           var materia = result[i];
+          materia.color = color[i];
           materia.disciplina = this.capitalize(materia.nome_disciplina);
           if(materia.disciplina != '* Comunicados e materiais para todos os ALUNOS de Computação'){
             materia.nome_disciplina_correta = materia.disciplina;

@@ -19,64 +19,67 @@
 </ion-toolbar>
 </ion-header>
 <!-- Move tabs ionic change -->
-<ion-content>
-  
-<div [ngSwitch]="atividades_switch">
-    <div  *ngFor="let atividade of atividadesbd">
-  <ion-list *ngSwitchCase="'a_fazer'">
-      <div id="fazer" *ngIf="atividade.status_atividade == 0">
-    <a style="text-decoration: none">
-        <ion-card class="atv-{{atividade.key}}">
+<ion-content>  
+  <div [ngSwitch]="atividades_switch">
+      <ng-container *ngFor="let atividade of atividadesbd" >
+    <ion-list *ngSwitchCase="'a_fazer'">
+        <div id="fazer" *ngIf="atividade.status_atividade == 0">
+      <a style="text-decoration: none">
+          <ion-card id="card-ativ" class="atv-{{atividade.key}}">
+            <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
+              {{atividade.titulo}}
+            </ion-card-header>
+            <ion-card-content>
+              {{atividade.descricao}}
+              <hr>
+              <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
+            </ion-card-content>
+          </ion-card>
+      </a>
+    </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'fazendo'">
+        <div id="fazendo" *ngIf="atividade.status_atividade == 1">
+      <a style="text-decoration: none">
+        <ion-card id="card-ativ" class="atv-{{atividade.key}}">
           <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
             {{atividade.titulo}}
           </ion-card-header>
           <ion-card-content>
             {{atividade.descricao}}
             <hr>
-            <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
+            <div class = "row">
+                <ion-buttons left><button ion-button id="btn-move" (click)="moveAtvAFazer(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover Apara a Fazer</button></ion-buttons>
+                <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvOk(atividade.key)" clear>Mover para Concluido&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
+            </div>
           </ion-card-content>
         </ion-card>
     </a>
   </div>
-  </ion-list>
+    </ion-list>
 
-  <ion-list *ngSwitchCase="'fazendo'">
-      <div id="fazendo" *ngIf="atividade.status_atividade == 1">
-    <a style="text-decoration: none">
-      <ion-card  class="atv-{{atividade.key}}">
-        <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
-          {{atividade.titulo}}
-        </ion-card-header>
-        <ion-card-content>
-          {{atividade.descricao}}
-          <hr>
-          <div class = "row">
-              <ion-buttons left><button ion-button id="btn-move" (click)="moveAtvAFazer(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover Apara a Fazer</button></ion-buttons>
-              <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvOk(atividade.key)" clear>Mover para Concluido&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
-          </div>
-        </ion-card-content>
-      </ion-card>
-  </a>
-</div>
-  </ion-list>
-
-  <ion-list *ngSwitchCase="'concluido'">
-    <div id="concluido" *ngIf="atividade.status_atividade == 2">
-    <a style="text-decoration: none">
-      <ion-card  class="atv-{{atividade.key}}">
-        <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
-          {{atividade.titulo}}
-        </ion-card-header>
-        <ion-card-content>
-          {{atividade.descricao}}
-          <hr>
-          <ion-buttons left><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover Apara a Fazendo</button></ion-buttons>
-        </ion-card-content>
-      </ion-card>
-  </a>
+    <ion-list *ngSwitchCase="'concluido'">
+      <div id="concluido" *ngIf="atividade.status_atividade == 2">
+      <a style="text-decoration: none">
+        <ion-card id="card-ativ" class="atv-{{atividade.key}}">
+          <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
+            {{atividade.titulo}}
+          </ion-card-header>
+          <ion-card-content>
+            {{atividade.descricao}}
+            <hr>
+            <ion-buttons left><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover Apara a Fazendo</button></ion-buttons>
+          </ion-card-content>
+        </ion-card>
+    </a>
+    </div>
+    </ion-list>
+      </ng-container>
   </div>
-  </ion-list>
-</div>
-</div>
-<button ion-button full outline (click)="irParaAddAtividade(id_disciplina,id_aluno)"><ion-icon ios="md-bookmarks" md="md-bookmarks"></ion-icon>&nbsp;Adicionar Atividade</button>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title><button ion-button full outline (click)="irParaAddAtividade(id_disciplina,id_aluno)"><ion-icon ios="md-bookmarks" md="md-bookmarks"></ion-icon>&nbsp;Adicionar Atividade</button></ion-title>
+  </ion-toolbar>
+</ion-footer>
