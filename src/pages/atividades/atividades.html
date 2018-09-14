@@ -23,27 +23,27 @@
   <div [ngSwitch]="atividades_switch">
       <ng-container *ngFor="let atividade of atividadesbd" >
     <ion-list *ngSwitchCase="'a_fazer'">
-        <div id="fazer" *ngIf="atividade.status_atividade == 0">
-      <a style="text-decoration: none">
-          <ion-card id="card-ativ" class="atv-{{atividade.key}}">
-            <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
-              {{atividade.titulo}}
-            </ion-card-header>
-            <ion-card-content>
-              {{atividade.descricao}}
-              <hr>
-              <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
-            </ion-card-content>
-          </ion-card>
-      </a>
-    </div>
+        <div id="fazer" *ngIf="atividade && atividade.status_atividade == 0">
+          <a style="text-decoration: none">
+              <ion-card id="card-ativ" class="atv-{{atividade.key}}">
+                <ion-card-header style="text-align: center;" (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
+                  {{atividade.titulo}}
+                </ion-card-header>
+                <ion-card-content>
+                  {{atividade.descricao}}
+                  <hr>
+                  <ion-buttons right><button ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
+                </ion-card-content>
+              </ion-card>
+          </a>
+        </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'fazendo'">
         <div id="fazendo" *ngIf="atividade.status_atividade == 1">
       <a style="text-decoration: none">
         <ion-card id="card-ativ" class="atv-{{atividade.key}}">
-          <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
+          <ion-card-header style="text-align: center;" (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
             {{atividade.titulo}}
           </ion-card-header>
           <ion-card-content>
@@ -63,7 +63,7 @@
       <div id="concluido" *ngIf="atividade.status_atividade == 2">
       <a style="text-decoration: none">
         <ion-card id="card-ativ" class="atv-{{atividade.key}}">
-          <ion-card-header (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
+          <ion-card-header style="text-align: center;" (click)="openModal({atividade: atividade.titulo},{key: atividade.key},{desc: atividade.descricao})">
             {{atividade.titulo}}
           </ion-card-header>
           <ion-card-content>
@@ -75,6 +75,9 @@
     </a>
     </div>
     </ion-list>
+    <ng-template #noAtv>
+      AQ
+    </ng-template>
       </ng-container>
   </div>
 </ion-content>

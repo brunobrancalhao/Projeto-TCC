@@ -1,13 +1,10 @@
 import { FirebaseServiceProvider } from './../../providers/firebase-service/firebase-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController  } from 'ionic-angular';
 import { NgSwitch } from '@angular/common';
 import { ModalController, Platform, ViewController } from 'ionic-angular';
 import { ModalPage } from '../modal/modal';
 import {AddAtividadesPage} from '../add-atividades/add-atividades'
-import * as $ from 'jquery';
-
-
 import { MateriasProvider } from './../../providers/materias/materias';
 
 /**
@@ -31,7 +28,7 @@ export class AtividadesPage {
   id_aluno:string;
   id_disciplina:string;
   atividades_switch: string = "a_fazer";
-  constructor(public dbService: FirebaseServiceProvider,public navCtrl: NavController, private toast : ToastController ,public navParams: NavParams, public modalCtrl: ModalController, private materiasProvider : MateriasProvider) {
+  constructor(public alertCtrl: AlertController, public dbService: FirebaseServiceProvider,public navCtrl: NavController, private toast : ToastController ,public navParams: NavParams, public modalCtrl: ModalController, private materiasProvider : MateriasProvider) {
     // console.log(this.atvBd);
   }
 
@@ -70,21 +67,23 @@ export class AtividadesPage {
               
         }*/
       await this.dbService.getAtividades(id_aluno,id_disciplina).then((atividadesbd2: any) => {
-          this.atividadesbd = atividadesbd2;
+          
+        this.atividadesbd = atividadesbd2;
 
-      this.atividades.push(this.atividadesbd);
+        this.atividades.push(this.atividadesbd);
         
       }).catch((error: any) => {
         this.toast.create({message: 'Erro nenhuma atividade encontrada' + error.erro, position : 'botton', duration : 30000});
       })
   	//})
-
   }
 
   irParaAddAtividade(id_disciplina, id_aluno){
     let addAtvModal = this.modalCtrl.create(AddAtividadesPage, { id_disciplina : id_disciplina,id_aluno : id_aluno });
     addAtvModal.onDidDismiss(data => {
-      this.atividadesbd.push(data);
+      if(data){
+        this.atividadesbd.push(data);
+      }
     });
     addAtvModal.present();
   }
@@ -92,11 +91,19 @@ export class AtividadesPage {
   openModal(atividade,key,desc) {
     let atvModal = this.modalCtrl.create(ModalPage, { atividade : atividade.atividade,key : key.key, desc : desc.desc });
     atvModal.onDidDismiss(data => {
-      this.atividadesbd.forEach((element,i) => {
-        if(element.key == data.key){
-          this.atividadesbd[i].descricao = data.descricao; 
+      if(data){
+        if(data.delete){
+          this.atividadesbd.splice(this.atividadesbd.indexOf(data.key), 1); 
+        } else {
+          this.atividadesbd.forEach((element,i) => {
+            if(element){
+              if(element.key == data.key){
+                this.atividadesbd[i].descricao = data.descricao; 
+              }
+            }
+          });
         }
-      });
+      }
     });
     atvModal.present();
   }

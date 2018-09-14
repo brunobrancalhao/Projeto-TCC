@@ -60,6 +60,10 @@ export class FirebaseServiceProvider {
     this.db.database.ref("atividades/"+key).update({ descricao : desc });
   }
 
+  removeItem(key){
+    this.db.database.ref("atividades/"+key).remove();
+  }
+
   moveAtv(key : string,status){
     this.db.database.ref("atividades/"+key).update({ status_atividade : status});
   }

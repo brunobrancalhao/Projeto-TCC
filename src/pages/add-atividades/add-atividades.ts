@@ -47,11 +47,11 @@ export class AddAtividadesPage {
 
    }
     this.dbService.save(atividades);
-    this.toast.create({ message: 'Atividade Cadastrada com Sucesso !', duration: 2000 }).present();
+    this.toast.create({ message: 'Atividade cadastrada com sucesso!', duration: 2000 }).present();
     setTimeout(() => 
     {
       this.viewCtrl.dismiss(atividades);
-    },2000);
+    },1500);
   }
 
 }

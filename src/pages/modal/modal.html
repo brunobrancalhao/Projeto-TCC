@@ -9,6 +9,11 @@
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons right>
+        <button ion-button (click)="updateDesc()">
+          <span ion-text color="primary" showWhen="ios">Salvar</span>
+        </button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,11 +22,10 @@
         <ion-label floating>{{atividade}}</ion-label>
         <ion-textarea [(ngModel)]="descricao">{{descricaoantiga}}</ion-textarea>
       </ion-item>
-        <ion-fab left bottom>
-          <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
-          <ion-fab-list side="top">
-            <button ion-fab (click)="dismiss()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
-            <button ion-fab (click)="updateDesc()"><ion-icon name="ios-checkmark-circle-outline"></ion-icon></button>
-          </ion-fab-list>
-        </ion-fab>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-title><button style="color:red;" ion-button full outline (click)="deleteAtividade()"><ion-icon name="md-trash"></ion-icon>&nbsp;Deletar Atividade</button></ion-title>
+    </ion-toolbar>
+  </ion-footer>

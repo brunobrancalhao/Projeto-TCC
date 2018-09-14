@@ -18,8 +18,16 @@ page-atividades {
     font-size:16px
 }
 
+.scroll-content{
+    background-color: #f8f8f8;
+}
+
 #card-ativ{
-    background-color:#efeff0;
+    background-color: white;
+    border-radius: 16px;
+    margin-left: 13px;
+    width: 93%;
+    border: 1px solid #e0cece;
 }
 
 #btn-move{
