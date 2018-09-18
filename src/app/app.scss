@@ -545,4 +545,13 @@
   .fadeInDown {
     animation-name: fadeInDown;
   }
+
+  .back-button-text {
+    font-size: 0;
+    &:before {
+      content: 'Voltar';
+      display: block;
+      font-size: 20px;
+    }
+  }
   

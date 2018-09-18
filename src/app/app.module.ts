@@ -4,11 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import * as jquery from 'jquery'
 import { IonicStorageModule } from '@ionic/storage';
-
-
-
 
 import {AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 import { MyApp } from './app.component';
@@ -16,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { TwdServiceProvider } from '../providers/twd-service/twd-service';
 import { IndexPage } from '../pages/index/index';
 import { AtividadesPage } from '../pages/atividades/atividades';
+import { SobrePage } from '../pages/sobre/sobre';
 import { AddAtividadesPage } from '../pages/add-atividades/add-atividades';
 import { ModalPage } from '../pages/modal/modal';
 import { MateriasProvider } from '../providers/materias/materias';
@@ -42,6 +39,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AtividadesPage,
     ModalPage,
     AddAtividadesPage,
+    SobrePage,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +56,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
     IndexPage,
     AtividadesPage,
     ModalPage,
-    AddAtividadesPage
+    AddAtividadesPage,
+    SobrePage
   ],
   providers: [
     StatusBar,

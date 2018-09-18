@@ -5,8 +5,13 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancelar</span>
+        <span ion-text color="danger" showWhen="ios">Cancelar</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button (click)="addAtv()">
+        <span ion-text color="primary" showWhen="ios">Salvar</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -14,18 +19,11 @@
 
 <ion-content>
     <ion-item>
-        <ion-label>Titulo</ion-label>
-        <ion-input type="text" required [(ngModel)]="titulo"></ion-input>
+        <ion-label>Titulo:</ion-label>
+        <ion-input style="color: black" type="text" required [(ngModel)]="titulo"></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label>Descrição</ion-label>
-          <ion-textarea [(ngModel)]="descricao" ngControl="descricao"></ion-textarea>
+          <ion-label>Descrição:</ion-label>
+          <ion-textarea style="color: black" [(ngModel)]="descricao" ngControl="descricao"></ion-textarea>
     </ion-item>
-        <ion-fab left bottom>
-          <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
-          <ion-fab-list side="top">
-            <button ion-fab (click)="dismiss()"><ion-icon name="ios-close-circle-outline"></ion-icon></button>
-            <button ion-fab (click)="addAtv()"><ion-icon name="ios-checkmark-circle-outline"></ion-icon></button>
-          </ion-fab-list>
-        </ion-fab>
 </ion-content>

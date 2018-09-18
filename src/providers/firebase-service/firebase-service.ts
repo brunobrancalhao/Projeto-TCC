@@ -60,6 +60,13 @@ export class FirebaseServiceProvider {
     this.db.database.ref("atividades/"+key).update({ descricao : desc });
   }
 
+  clearAll(user){
+    var ref = this.db.database.ref('atividades');
+    ref.orderByChild('id_aluno').equalTo(user).on('child_added', (snapshot) => {
+        snapshot.ref.remove()
+    });
+  }
+
   removeItem(key){
     this.db.database.ref("atividades/"+key).remove();
   }

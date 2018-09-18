@@ -40,12 +40,12 @@
     <ion-content color="primary">
   
       <ion-list class="user-list">
-        <button ion-item menuClose class="text-1x">
+        <button ion-item class="text-1x" (click)="clearAll()">
             <ion-icon item-left name="md-trash" color="danger"></ion-icon>
             <span ion-text color="danger">Limpar Atividades</span>
         </button>
         <hr>
-        <button ion-item menuClose class="text-1x">
+        <button ion-item menuClose class="text-1x" (click)="sobre()">
           <ion-icon item-left name="ios-information-circle-outline" color="primary"></ion-icon>
           <span ion-text color="primary">Sobre</span>
         </button>
