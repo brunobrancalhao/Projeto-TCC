@@ -26,7 +26,7 @@ export class MyApp {
       let user = localStorage.getItem('user');
       if(user){
         this.nome = this.nome1.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
-        this.rootPage = IndexPage;
+        this.nav.push(IndexPage);
       } else {
         this.rootPage = HomePage;
       }
