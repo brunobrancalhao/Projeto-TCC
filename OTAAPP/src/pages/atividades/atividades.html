@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar no-border-bottom>
-      <ion-title>
+      <ion-title  style="margin-top: 5px;">
         Atividades
       </ion-title>
     </ion-navbar>
@@ -13,7 +13,7 @@
       Fazendo
     </ion-segment-button>
     <ion-segment-button value="concluido">
-      Concluído
+      Feito
     </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
@@ -32,7 +32,7 @@
                 <ion-card-content>
                   {{atividade.descricao}}
                   <hr>
-                  <ion-buttons right><button style="background-color:#f6fa8b" ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
+                  <ion-buttons right><button style="background-color:#f6fa8b" ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear>Mover para Fazendo&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
                 </ion-card-content>
               </ion-card>
           </a>
@@ -49,9 +49,9 @@
           <ion-card-content>
             {{atividade.descricao}}
             <hr>
-            <div class = "row" style="margin-left: -2px;">
-                <ion-buttons left><button style="background-color: #ffa9a9 " ion-button id="btn-move" (click)="moveAtvAFazer(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover para a fazer</button></ion-buttons>
-                <ion-buttons right><button style="background-color:#9ff487 " ion-button id="btn-move" (click)="moveAtvOk(atividade.key)" clear>Mover para concluido&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
+            <div class = "row" style="margin-left: 10px;">
+                <ion-buttons left><button style="background-color: #ffa9a9 " ion-button id="btn-move" (click)="moveAtvAFazer(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover para A fazer</button></ion-buttons>
+                <ion-buttons right><button style="background-color:#9ff487 " ion-button id="btn-move" (click)="moveAtvOk(atividade.key)" clear>Mover para Feito&nbsp;<ion-icon name="md-return-right"></ion-icon></button></ion-buttons>
             </div>
           </ion-card-content>
         </ion-card>
@@ -69,7 +69,7 @@
           <ion-card-content>
             {{atividade.descricao}}
             <hr>
-            <ion-buttons left><button style="background-color:#f6fa8b" ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover para fazendo</button></ion-buttons>
+            <ion-buttons left><button style="background-color:#f6fa8b" ion-button id="btn-move" (click)="moveAtvFazendo(atividade.key)" clear><ion-icon name="md-return-left"></ion-icon>&nbsp;Mover para Fazendo</button></ion-buttons>
           </ion-card-content>
         </ion-card>
     </a>
