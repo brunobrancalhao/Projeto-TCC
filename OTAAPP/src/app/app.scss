@@ -546,12 +546,17 @@
     animation-name: fadeInDown;
   }
 
+  .back-button-icon {
+    margin-top: 10px;
+    font-size: 22px;
+  }
   .back-button-text {
     font-size: 0;
     &:before {
       content: 'Voltar';
       display: block;
-      font-size: 20px;
+      font-size: 18px;
+      margin-top: 10px;
     }
   }
   
